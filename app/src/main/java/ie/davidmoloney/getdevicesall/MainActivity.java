@@ -24,8 +24,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         final AudioManager audioManager = (AudioManager) getSystemService(AUDIO_SERVICE);
-        if (audioManager != null) {
+        if (audioManager == null) {
             Toast.makeText(this, "Could not retrieve AudioManager", Toast.LENGTH_SHORT).show();
+        } else {
             final String[] deviceNames = getAudioDeviceInfoNames(audioManager);
             Toast.makeText(this, Arrays.toString(deviceNames), Toast.LENGTH_LONG).show();
         }
